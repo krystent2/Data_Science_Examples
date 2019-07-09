@@ -42,7 +42,7 @@ All coding is my own. Where "Additional Participants" are noted, it was a group 
 
 	- Additional Participants: Majid A., Shangyun L., Anup T.
 
-![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/Emojis/emojis.png)
+![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/Emojis/EmojiViz.png)
 
 
 ## PDF Files
