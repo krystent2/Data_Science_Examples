@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Top 5 Emojis</title>
+	<script src="//d3js.org/d3.v4.0.0-alpha.18.min.js"></script>
+	<script type="text/javascript" src="d3-iconarray-0.0.2/build/d3-iconarray.min.js"></script>
+	<style type="text/css">
+	*{
+		font-family: sans-serif;
+	}
+
+	button{
+		cursor: pointer; 
+		color: Blue;
+		font-size: 14px;
+	}
+	
+	svg{display:block;}
+	.zero{display: none;}
+
+	text{
+		font-size: 80px; 
+	}
+	hr{
+		border:none;
+		border-bottom: 2px solid black;
+	}
+
+	#viz {
+		float: left;
+		width: 22%;
+		padding: 10px;
+	}	
+
+	#viz2 {		
+	}
+
+
+	</style>
+</head>
+<body>
+<h1>Top 5 Emojis in User Names and Tweets (by Country)</h1>
+<font size='4'>Click a country below and you will be able to see the top 5 emojis
+	appearing in User Names and the top 5 emojis appearing in Tweets.<br>
+	<br>
+	Because the use of emojis, especially in Tweets, is often seasonal,
+	you may see emojis that have to do with something happening in that country
+	at the time the Twitter data was collected.<br> 
+<br>
+</font>
+
+<div id="nav">	
+</div>
+
+<hr>
+<h2 style="color:#006400" font-size: 28px, id="chart-title"></h2>
+
+<h3 style="float: left; width: 25%;">Top 5 by User Name</h3>
+<h3 style="float: right; width: 75%;">Top 5 by Tweet</h3>
+
+<div id="viz"></div>
+
+<div id="viz2"></div>
+
+</body>
+<script type="text/javascript">
+
+var picto = {
+	'smile':'😀', 
+	'laugh tears':'😂',
+	'red heart':'❤️',
+	'purple heart':'💜',
+	'crown':'👑',
+	'tri flag':'🚩',
+	'collision':'💥',
+	'cricket':'🏏',
+	'fire':'🔥',
+	'roflol':'🤣',
+	'heart eyes':'😍',
+	'bawling':'😭',
+	'US flag':'🇺🇸',
+	'beach':'🌊',
+	'two pink hearts':'💕',
+	'blue heart':'💙',
+	'police light':'🚨',
+	'rose':'🌹',
+	'french flag':'🇫🇷',
+	'pumpkin':'🎃',
+	'hibiscus':'🌺',
+	'sunflower':'🌻',
+	'nose steam':'😤',
+	'fist bump':'👊',
+	'thinking':'🤔',
+	'diamond':'💎',
+	'Nigeria flag':'🇳🇬',
+	'world':'🌍',
+	'turban':'👳',
+	'graduate':'🎓',
+	'sweat smile':'😅',
+	'kiss':'💋',
+	'thumbtack':'📌',
+	'cherry blossom':'🌸',
+	'clapping':'👏',
+	'UK flag':'🇬🇧',
+	'butterfly':'🦋',
+	'small t':'𝓽󠁧',
+	'wink':'😉',
+	'star':'🌟',
+	'bell':'🔔',
+	'wilted flower':'🥀',
+	'shamrock':'🍀',
+	'small i':'𝓲',
+	'microbe':'🦠',
+	'thumbs up':'👍',
+	'lion':'🦁',
+	'smile sunglass':'😎',
+	'fingers crossed':'🤞',
+	'AU flag':'🇦🇺',
+	'dashing away':'💨',
+	'skull':'💀',
+	'muscles':'💪',
+	'small e':'𝖊',
+	'JP flag':'🇯🇵',
+	'squirrel':'🐿',
+	'monkey':'🙈',
+	'growing heart':'💗',
+	'smile angel':'😇',
+	'rolling eyes':'🙄',
+	'zany face':'🤪',
+	'maple leaf':'🍁',
+	'praying hands':'🙏',
+	'litter bin':'🚮',
+	'money mouth':'🤑',
+	'mobile phone':'📱',
+	'woman dancing':'💃',
+	'new moon':'🌚',
+	'birthday cake':'🎂',
+	'ghana flag':'🇬🇭',
+	'alien':'👽',
+	'small n':'𝔫',
+	'kenya flag':'🇰🇪',
+	'yellow heart':'💛',
+	'tomato':'🍅',
+	'revolving hearts':'💞',
+	'raised hands':'🙌',
+	'relieved face':'😌',
+	'paw prints':'🐾',
+	'bouquet':'💐',
+	'swimming':'🏊',
+	'video game':'🎮',
+	'money wings':'💸',
+	'bag money':'💰',
+	'21-Mar':'📆',
+	'green heart':'💚',
+	'cherries':'🍒',
+	'heart decor':'💟',
+	'baby':'👶',
+	'black heart':'🖤',
+	'field hockey':'🏑',
+	'star struck':'🤩',
+	'rainbow':'🌈',
+	'white flag':'🏳',
+	'bunny':'🐰',
+	'cresent moon':'🌙',
+	'coconut':'🥥'
+};
+
+var categories = ['smile', 'laugh tears', 'red heart', 'purple heart', 'crown', 'cat',
+		'tri flag', 'collision', 'cricket','fire','roflol','heart eyes','bawling','US flag',
+		'beach','two pink hearts','blue heart','police light','rose','french flag',
+		'pumpkin','hibiscus','sunflower','nose steam','fist bump', 'thinking','diamond',
+		'Nigeria flag','world','turban','graduate','sweat smile','kiss','thumbtack',
+		'cherry blossom','clapping','UK flag','butterfly','small t','wink','star',
+		'bell','wilted flower','shamrock','small i','microbe','thumbs up','lion',    
+		'smile sunglass','fingers crossed','AU flag','dashing away','skull','muscles',
+		'small e','JP flag','squirrel','monkey','growing heart','smile angel',
+		'rolling eyes','zany face','maple leaf','praying hands','litter bin','money mouth',
+		'mobile phone','woman dancing','new moon','birthday cake','ghana flag','alien',
+		'small n','kenya flag','yellow heart','tomato','revolving hearts',
+		'raised hands','relieved face','paw prints','bouquet','swimming','video game',
+		'money wings','bag money','21-Mar','green heart','cherries','heart decor','baby',
+		'black heart','field hockey','star struck','rainbow','white flag','bunny',
+		'cresent moon','coconut'];	
+
+
+var width = 200, height = 100, margin = {top:80,left:50,bottom:10,right:100};
+
+var layout = d3_iconarray.layout()
+					.height(0)
+					.widthFirst(0);
+
+var layout2 = d3_iconarray.layout()
+					.height(0)
+					.widthFirst(0);					
+
+var xScale = d3_iconarray.scale()
+					.domain([0,10])
+					.range([0, width-(margin.left+margin.right)])
+					.gapSize(1)
+					.gapInterval(1);
+
+var yScale = d3.scaleLinear()
+					.domain([0,5])
+					.range([0,height-(margin.top + margin.bottom)])
+
+// changed 'city' to 'country' in this section 
+d3.tsv('emoji_screen_name.tsv',function(dataName){
+	d3.tsv('emoji_text.tsv',function(dataText){
+		//console.log(dataName.columns)
+		d3.select('#nav').selectAll('span.country-button')
+			.data(dataName).enter()
+				.append('span').attr('class','country-button')
+				.append('button')
+					.html(function(d){return d.Country; }) //try adding 'top 5 in User Names' 
+					.on('click', function(d, i){ 
+					draw(dataName[i], "viz");
+					draw(dataText[i], "viz2");
+				})
+
+
+		draw(dataName.find(function(d){
+			return (d.Country == 'Australia');
+		}), "viz");
+		draw(dataText.find(function(d){
+			return (d.Country == 'Australia');
+		}), "viz2");
+	
+
+	});
+})
+
+function draw(data, elID){
+
+	d3.select('#chart-title').text(function(){
+		return data.Country;
+	});
+
+	var el = d3.select('#' + elID);
+
+	el
+		.selectAll('svg')
+		.remove();
+
+	el
+		.selectAll('svg')
+		.data(categories)
+			.enter()
+		.filter(function(d){
+			return data[d] == "1";
+
+		})	
+		.append('svg')
+			.attr('width', width)
+			.attr('height', height)
+			.attr('class','category')
+			.append('g')
+				.attr('class','plot')
+				.attr('transform','translate('+margin.left+','+margin.top+')')
+
+	el	
+		.selectAll('svg')
+		.classed('zero', function(d){
+				return (data[d] == 0);
+			});
+
+	el.selectAll('svg g.plot')
+		.call(function(parent){
+			var join = parent.selectAll('.icon')
+				.data(function(d){ return layout( expand(data[d], d) ); });
+
+			join.exit().remove();
+
+			join.enter()
+				.append('text').attr('class','icon');
+
+			join.attr('transform', function(d){
+				return 'translate(' + xScale(d.position.x) + ',' + yScale(d.position.y) + ')'
+			}).text(function(d){ 
+				//console.log(d.data);
+				return picto[d.data]; 
+			})
+
+		})
+}
+
+function expand(length, category){
+	return d3.range(0,length,1).map(function(){ return category; })
+}
+
+</script>
+</html>
