@@ -25,7 +25,7 @@ All coding is my own. Where "Additional Participants" are noted, it was a group 
 
 	- Keywords: Python, Logistic Regression
 
-![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/Fun_House/FunHouseViz.png)
+![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/KIVA/Kiva.png)
 
 
 
