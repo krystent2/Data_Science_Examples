@@ -5,7 +5,7 @@ All coding is my own. Where "Additional Participants" are noted, it was a group 
 
 ## [Fun House](https://github.com/krystent2/Data_Science_Examples/blob/master/Fun_House/FunHouseGame.py)
 
-        - Game for kids; walks player through a fun house of rooms
+	- Game for kids; walks player through a fun house of rooms
 
 	- Each room offers action choices with varying results, including moving to 
 	  next room or getting ejected and starting over
