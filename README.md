@@ -15,7 +15,17 @@ All coding is my own. Where "Additional Participants" are noted, it was a group 
 ![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/Fun_House/FunHouseViz.png)
 
 
+## [KIVA Non-funded Loans](https://github.com/krystent2/Data_Science_Examples/tree/master/KIVA)
 
+	- Predict loans that will not be funded
+
+	- Exploratory data analysis to identify key variables
+
+	- Forward-step logistic regression yielded a 76.4% accuracy score
+
+	- Keywords: Python, Logistic Regression
+
+![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/Fun_House/FunHouseViz.png)
 
 
 
