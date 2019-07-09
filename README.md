@@ -28,6 +28,31 @@ All coding is my own. Where "Additional Participants" are noted, it was a group 
 ![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/KIVA/Kiva.png)
 
 
+## [Twitter Emoji Use](https://github.com/krystent2/Data_Science_Examples/tree/master/Emojis)
+
+	- Identify top 5 emojis by UserName and in Tweets by Country
+
+	- Collect data using Twitter's API
+
+	- Use Python to extract emojis from raw data
+
+	- Create interactive visualization using JavaScript and D3 
+
+	- Keywords: Python, JavaScript/D3
+
+	- Additional Participants: Majid A., Shangyun L., Anup T.
+
+![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/Emojis/emojis.png)
+
+
+
+
+
+
+
+
+
+
 
 
 
