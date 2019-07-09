@@ -45,9 +45,9 @@ All coding is my own. Where "Additional Participants" are noted, it was a group 
 ![alt text](https://github.com/krystent2/Data_Science_Examples/blob/master/Emojis/EmojiViz.png)
 
 
-## PDF Files
+### PDF Files
 
-	- PDF's in this repo reflect bootcamp and "for fun" projects completed a couple years ago
+PDF's in this repo reflect bootcamp and "for fun" projects completed a couple years ago
 
 
 
