@@ -3,7 +3,7 @@ Data Science Portfolio
 
 All coding is my own. Where "Additional Participants" are noted, it was a group project with others coding their respective portions and all of us contributing to a final deliverable.
 
-[Fun House](https://github.com/krystent2/Data_Science_Examples/blob/master/Fun_House/FunHouseGame.py)
+### [Fun House](https://github.com/krystent2/Data_Science_Examples/blob/master/Fun_House/FunHouseGame.py)
 
 	* Game for kids; walks player through a fun house of rooms
 
